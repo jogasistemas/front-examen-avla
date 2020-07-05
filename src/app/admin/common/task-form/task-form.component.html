@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <form action="" novalidate autocomplete="off" (submit)="onSubmit($event)" [formGroup]="taskForm">
+                <div class="field">
+                    <div class="control">
+                        <input class="input" formControlName="title" type="text" placeholder="title (min. 6 caracteres)" />
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" formControlName="description" type="text" placeholder="descripción de la tarea"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="select">
+                        <select formControlName="status">
+                             <optgroup label="estados">
+                                <option [value]="1" [selected]=true >por empezar</option>
+                                <option [value]="2">en progreso</option>
+                                <option [value]="3">completado</option>
+                         </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="select">
+                        <select formControlName="userId">
+                                <option [selected]="model.id== 0 || model.id=='' " value="0">asignar usuario</option>
+                                 <optgroup label="usuarios">
+                                    <option [value]="item.id" [selected]="item.id==model.userId"*ngFor="let item of modelUsers">{{item.names}}</option>  
+                                 </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="field is-grouped is-grouped-centered">
+                    <p class="control">
+                        <button type="button" class="button" (click)="onBack()">Regresar</button>
+                    </p>
+                    <p class="control">
+                        <button type="submit" class="button is-dark" [class.is-loading]="isLoading">Guardar</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
