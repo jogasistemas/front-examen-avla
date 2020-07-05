@@ -16,9 +16,9 @@
                     <div class="select">
                         <select formControlName="status">
                              <optgroup label="estados">
-                                <option [value]="1" [selected]=true >por empezar</option>
-                                <option [value]="2">en progreso</option>
-                                <option [value]="3">completado</option>
+                                <option [value]="1" [selected]="model.status==1 || model.status==''" >por empezar</option>
+                                <option [value]="2" [selected]="model.status==2">en progreso</option>
+                                <option [value]="3" [selected]="model.status==3">completado</option>
                          </select>
                     </div>
                 </div>

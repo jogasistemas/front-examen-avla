@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 
 import Task from '../../models/task.model';
 import { environment } from '../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TaskService {
@@ -13,8 +14,13 @@ export class TaskService {
 
   getAllTask() {
     const url = `${this.BASE_URL}/${this.API}/`;
-
-    return this.http.get(url);
+    
+   /*  return this.http.get(url); */
+      return this.http.get(url).pipe(map((tasks:Task[])=>{
+        return tasks.map(task => {
+          task.statusName= this.getStatus(task);
+        return task })
+    }))
   }
 
   getTaskByid(id: number) {
@@ -40,4 +46,19 @@ export class TaskService {
 
     return this.http.delete(url);
   }
+
+  getStatus(task:Task): string{
+     console.log('getStatus' + task.status);
+    switch(task.status) {
+     case 1: 
+            return 'por empezar';
+     case 2:
+            return 'en progreso';
+     case 3:
+            return 'completada';
+     default:
+           return  'error';
+    }
+  }
+
 }

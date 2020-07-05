@@ -28,7 +28,7 @@ export class TaskEditComponent implements OnInit {
 
   onSaveTask(task: Task) {
     this.taskService.updateTask(task).subscribe(res => {
-      console.log('update');
+      console.log('update : '+ JSON.stringify(task));
       this.router.navigate(['/admin']);
     });
   }
