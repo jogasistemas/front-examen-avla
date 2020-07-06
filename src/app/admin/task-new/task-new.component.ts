@@ -25,7 +25,12 @@ export class TaskNewComponent implements OnInit {
       id: 0,
       title: '',
       description: '',
-      status: 0
+      status: 0,
+      user:{
+        userId: 0,
+        names:'',
+        lastName:''
+      }
     };
 
     this.userService.getAllUser().subscribe((Users: User[]) => {

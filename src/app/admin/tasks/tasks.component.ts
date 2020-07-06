@@ -20,32 +20,10 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
 
 
-    this.taskService.getAllTask().subscribe((tasks: Task[]) => {
+    this.taskService.getAllTask().subscribe((tasks: any) => {
+      console.log("lista de tasks : "+JSON.stringify( tasks));
       this.tasks= tasks;
     });
-  /*   new Promise((resolver, rechazar) => {
-      this.taskService.getAllTask().subscribe((tasks: Task[]) => {
-        this.tasksAux= tasks;
-        resolver();
-     });  
-     console.log("promesa");
-    
-  }).catch(() => {
-   
-    this.tasksAux.forEach((task)=> {
-      console.log("catch"+JSON.stringify(task));
-      this.tasks.push(task)});
-      console.log("catch");
-    console.log(this.tasks);
-  }).then(() => {
-    console.log("catch"+JSON.stringify(this.tasksAux));
-    this.tasksAux.forEach((task)=> {
-      task.status= this.getStatus(task); 
-      this.tasks.push(task)});
-      console.log("then");
-    console.log(this.tasks);
-  });
-   */     
   }
 
   onDeleteTask(task: Task) {

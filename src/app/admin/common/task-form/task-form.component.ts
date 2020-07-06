@@ -16,6 +16,7 @@ export class TaskFormComponent implements OnInit {
 
   @Input() model: Task;
   @Input() modelUsers: User[];
+  modelUser:User;
   @Output() completedform: EventEmitter<Task> = new EventEmitter<Task>();
 
   constructor(private location: Location) { }
@@ -25,7 +26,7 @@ export class TaskFormComponent implements OnInit {
       title: new FormControl(this.model.title || ''),
       description: new FormControl(this.model.description  || ''),
       status: new FormControl(this.model.status  || ''),
-      userId: new FormControl(this.model.userId  || 0)
+      userId: new FormControl(this.model.user.userId  || '')
     });
   }
    
@@ -35,6 +36,7 @@ export class TaskFormComponent implements OnInit {
 
   onSubmit(e) {
     e.preventDefault();
+    
     const { value, valid } = this.taskForm;
     this.isLoading = true;
 
@@ -42,6 +44,7 @@ export class TaskFormComponent implements OnInit {
       if (this.model.id) {
         value.id = this.model.id;
       }
+      console.log('pintar usuario :'+ JSON.stringify(value));
       this.completedform.emit(value);
     }
   }

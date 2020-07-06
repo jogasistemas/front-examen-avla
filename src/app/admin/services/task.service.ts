@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import Task from '../../models/task.model';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class TaskService {
@@ -16,7 +17,7 @@ export class TaskService {
     const url = `${this.BASE_URL}/${this.API}/`;
     
    /*  return this.http.get(url); */
-      return this.http.get(url).pipe(map((tasks:Task[])=>{
+      return this.http.get(url).pipe(map((tasks:any)=>{
         return tasks.map(task => {
           task.statusName= this.getStatus(task);
         return task })
@@ -31,7 +32,7 @@ export class TaskService {
 
   createTask(Task: Task) {
     const url = `${this.BASE_URL}/${this.API}/`;
-
+   console.log("task"+JSON.stringify(Task));
     return this.http.post(url, Task);
   }
 

@@ -24,9 +24,7 @@
                     <td class="has-text-grey">{{ task.title }}</td>
                     <td class="has-text-grey">{{ task.description }}</td>
                     <td class="has-text-grey">{{ task.statusName }}</td>
-                    <td [class]="task.stock === 0 ? 'has-text-danger' : 'has-text-grey'">
-                        {{ task.userId }}
-                    </td>
+                    <td class="has-text-grey">{{ task.user.names }} </td>
                     <td>
                         <a class="button is-small is-danger" (click)="onDeleteTask(task, $event)">
                             Eliminar
