@@ -1,6 +1,6 @@
 <div class="columns">
     <div class="column is-10 is-offset-1" *ngIf="task">
         <h2 class="subtitle is-3 has-text-centered">Actualizar tarea</h2>
-        <app-task-form [model]="task" (completedform)="onSaveTask($event)"></app-task-form>
+        <app-task-form [model]="task" [modelUsers]="users" (completedform)="onSaveTask($event)"></app-task-form>
     </div>
 </div>

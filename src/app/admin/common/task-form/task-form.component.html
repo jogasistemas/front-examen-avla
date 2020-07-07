@@ -27,7 +27,7 @@
                         <select formControlName="userId">
                                 <option [selected]="model.id== 0">asignar usuario</option>
                                  <optgroup label="usuarios">
-                                    <option [value]="item.userId" [selected]="item.id==model.user.userId"*ngFor="let item of modelUsers">{{item.names}}</option>  
+                                    <option [value]="item.userId" [selected]="item.userId==model.user.userId"*ngFor="let item of modelUsers">{{item.names}}</option>  
                                  </optgroup>
                         </select>
                     </div>
