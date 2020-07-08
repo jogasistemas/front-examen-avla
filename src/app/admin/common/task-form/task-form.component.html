@@ -15,6 +15,7 @@
                 <div class="field">
                     <div class="select">
                         <select formControlName="status">
+                            <option [value]="0" [selected]="model.status==0" >Seleccionar estado</option>
                              <optgroup label="estados">
                                 <option [value]="1" [selected]="model.status==1" >por empezar</option>
                                 <option [value]="2" [selected]="model.status==2">en progreso</option>
@@ -24,11 +25,10 @@
                 </div>
                 <div class="field">
                     <div class="select">
-                        <select formControlName="userId">
-                                <option [selected]="model.id== 0">asignar usuario</option>
-                                 <optgroup label="usuarios">
+                        <select formControlName="userId">         
+                               <optgroup label="usuarios">
                                     <option [value]="item.userId" [selected]="item.userId==model.user.userId"*ngFor="let item of modelUsers">{{item.names}}</option>  
-                                 </optgroup>
+                                </optgroup>
                         </select>
                     </div>
                 </div>

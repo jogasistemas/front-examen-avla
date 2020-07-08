@@ -5,6 +5,7 @@ import Task from '../../models/task.model';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '../../models/user.model';
+import { StatusTask } from '../config/statusTask.enum';
 
 @Injectable()
 export class TaskService {
@@ -52,13 +53,13 @@ export class TaskService {
      console.log('getStatus' + task.status);
     switch(task.status) {
      case 1: 
-            return 'por empezar';
+            return StatusTask.TODO;
      case 2:
-            return 'en progreso';
+            return StatusTask.PROGRESS;
      case 3:
-            return 'completada';
+            return StatusTask.TODO;
      default:
-           return  'error';
+           return  StatusTask.ERROR;
     }
   }
 
